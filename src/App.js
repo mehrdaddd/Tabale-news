@@ -19,7 +19,6 @@ const SORTS = {
     NONE : list => list,
     TITLE: list => sortBy(list ,'title'),
     AUTHOR: list => sortBy(list,'author'),
-    COMMENTS: list => sortBy(list,'num_comments').reverse(),
     POINTS: list => sortBy(list,'points').reverse() ,
 };
 
@@ -132,16 +131,14 @@ class App extends Component {
 
 
     onDismiss(id) {
-        const {results,searchKey } = this.state;
+        const {searchKey, results} = this.state;
         const {hits, page} = results[searchKey];
         const isNotId = item => item.objectID !== id;
         const updatedHits = hits.filter(isNotId);
-
-
-        this.setState(( prevState, searchKey ) => {
-            const results =  {...results, [searchKey]: {hits: updatedHits, page}};
-            return {results};
+        this.setState({
+            results: {...results, [searchKey]: {hits: updatedHits, page}}
         });
+
 
     }
 
@@ -181,7 +178,6 @@ class App extends Component {
                     </div>
                     : <Table
                         list={list}
-
                         onDismiss={this.onDismiss}
                     />
                 }
@@ -261,25 +257,18 @@ class Table extends Component {
                 </Sort>
             </span>
 
-                    <span style={{width: '10%'}}>
-                <Sort
-                    sortKey={'COMMMENTS'}
-                    onSort={this.onSort}
-                    activeSortKey={sortKey}
-                >
-                    Comments
-                </Sort>
-            </span>
-
-                    <span style={{width: '10%'}}>
+                    <span style={{width: '20%'}}>
                 <Sort
                     sortKey={'POINTS'}
-                    onSort={this.onSort}
+                    onSort= {this.onSort}
                     activeSortKey={sortKey}
                 >
                     Points
                 </Sort>
-            </span>
+                    </span>
+
+
+
                 </div>
                 {reverseSortedList.map(item =>
                     <div key={item.objectId} className="table-row">
