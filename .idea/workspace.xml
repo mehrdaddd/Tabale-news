@@ -162,7 +162,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="342" />
     <option name="y" value="310" />
     <option name="width" value="907" />
@@ -346,7 +346,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/App.js</url>
+          <url />
           <line>312</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
